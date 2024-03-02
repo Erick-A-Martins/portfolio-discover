@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+:root {
+    --text-color: white;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+    --text-color: black;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+    background: var(--bg-url) no-repeat top center/cover ;
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container {
+    width: 360px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+}
+/* PROFILE */
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+/* Identificando o id e logo apos identificando o elemento que quero modificar */
+#profile img {
+    /* Altura geralmente segue o conteudo da página, logo é descenessaria de se declarar*/
+    width: 112px;
+    margin: auto;
+}
+
+#profile p {
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+/* SWITCH */
+#switch {
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    left: 0;
+    transform: translateY(-50%);
+
+}
+
+.light #switch button {
+    right: 0;
+    left: initial;
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+/* LINKS */
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Direção em column; = Direção em column deixa as caixas uma abaixo da outra */
+    gap: 16px; /* GAP gera espaçamento apenas quando há mais de um conteudo no elemento aplicado */
+    padding: 24px 0;
+}
+
+ul li a {
+    display: flex;
+    align-items: center; /* Alinha os itens no eixo X */
+    justify-content: center; /* Alinha os itens do centro do eixos Y */
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    text-decoration: none;
+    font-weight: 500; /* Acima de 400 = acima de bold */
+
+    transition: background 0.5s; /* Qual a propriedade transicionada e depois em quantos segundos sera transicionada*/
+}
+
+/* Pseudo selector */
+ul li a:hover { /* hover = Ocorre ao passar o mouse por cima */
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+
+}
+
+/* SOCIAL LINKS*/
+
+#social-links {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    font-size: 24px;
+}
+
+#social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+
+#social-links a:hover {
+    background: var(--highlight-color);
+}
+
+footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ANOTAÇÕES */
+/* 
+(*) Asterisco = Seletor universal = aplica para todos os elementos 
+box-sizing: border-box; Medida do tamanho da caixa atraves da borda 
+
+background: url(./assets/bg-mobile.jpg) no-repeat top center/cover
+shorthand ou atalho = agrupamento das propriedades anteriores em - apenas background: color image repeat position/size
+
+# = seletor de id
+Existe uma regra de CSS que não centraliza automaticamente o top e o bottom
+
+PROPRIEDADES DE ELEMENTOS:
+    4 propriedades apos o elementos referentes ao relogio no sentido horario (top right bottom e left);
+        3 propriedades = 1- top / 2- right and left / 3- bottom;
+        2 propriedades = 1- top and bottom / 2- right and left;
+        1 propriedade = top, bottom, right and left.
+
+
+DISPLAY:
+    Alguns elementos de html tem o display naturalmente BLOCK ou INLINE
+    Block = a caixa ocupa toda a largura e faz o elemento de cima ficar em cima ou o debaixo ficar embaixo;
+    Inline = as caixas ficam em linha;
+    Em elementos Inlines não é possivel aplicar o margin: auto;
+    Todos os elementos Inline aceitam que seu elemento PAI defina seu posicionamento;
+
+
+BACKDROPFILTER:
+backdrop-filter (com -webkit antes) para suportar em outros navegadores
+
+
+POSITION: ABSOLUTE
+libera o uso do z-index, para uso de camadas e sopreposição de elementos
+
+DISPLAY: BLOCK
+colocar largura fixa e depois automatizar as margins laterais
+
+FLEX DIRECTION: ROW
+define que os itens dentro de um container flex devem ser posicionados em uma linha horizontal.
+
+FLEX DIRECTION: COLUMN
+define que os itens devem ser posicionados em uma coluna vertical.
+
+PSEUDO SELECTOR:
+Os pseudosseletores são uma forma de selecionar elementos HTML com base em seu estado ou posição em relação a outros elementos.
+
+*/
+
+
